@@ -1,0 +1,41 @@
+{
+  "name": "@bookingvila/common",
+  "version": "1.0.5",
+  "description": "",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "clean": "del ./lib/*",
+    "build": "npm run clean && tsc",
+    "pub": "git add . && git commit -am \"Updates\" && npm version patch -m \"Upgrade to %s for reasons\" && git push origin master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/alikarimii/bookingvila-common.git"
+  },
+  "author": "ali karimi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alikarimii/bookingvila-common/issues"
+  },
+  "homepage": "https://github.com/alikarimii/bookingvila-common#readme",
+  "devDependencies": {
+    "del-cli": "^3.0.1",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@types/cookie-session": "^2.0.41",
+    "@types/express": "^4.17.7",
+    "@types/joi": "^14.3.4",
+    "@types/jsonwebtoken": "^8.5.0",
+    "cookie-session": "^1.4.0",
+    "express": "^4.17.1",
+    "joi": "^17.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.0"
+  }
+}
