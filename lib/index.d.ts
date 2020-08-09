@@ -7,6 +7,7 @@ export * from './error/user-case-error';
 export * from './error/custom-error';
 export * from "./middleware/error-handler";
 export * from "./middleware/validation-factory";
+export * from './middleware/schemaCheck';
 export * from "./util/logger";
 export * from './events/listener';
 export * from './events/publisher';

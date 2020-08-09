@@ -8,6 +8,7 @@ export * from './error/custom-error'
 //
 export * from "./middleware/error-handler";
 export * from "./middleware/validation-factory";
+export * from './middleware/schemaCheck'
 //
 export * from "./util/logger";
 //
