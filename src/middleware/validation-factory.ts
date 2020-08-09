@@ -9,7 +9,6 @@ export enum ObjType {
 }
 
 export function requestValidator(schema: ObjectSchema, obj?: ObjType) {
-  if (!schema) return;
   return (req: Request, res: Response, next: NextFunction) => {
     let body: any;
     switch (obj) {

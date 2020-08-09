@@ -5,4 +5,4 @@ export declare enum ObjType {
     "query" = 1,
     "body" = 2
 }
-export declare function requestValidator(schema: ObjectSchema, obj?: ObjType): ((req: Request, res: Response, next: NextFunction) => void) | undefined;
+export declare function requestValidator(schema: ObjectSchema, obj?: ObjType): (req: Request, res: Response, next: NextFunction) => void;
