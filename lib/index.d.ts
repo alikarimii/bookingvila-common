@@ -10,3 +10,4 @@ export * from "./middleware/validation-factory";
 export * from "./util/logger";
 export * from './events/listener';
 export * from './events/publisher';
+export * from './domain';
