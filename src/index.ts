@@ -13,3 +13,5 @@ export * from "./util/logger";
 //
 export * from './events/listener'
 export * from './events/publisher'
+//
+export * from './domain'
