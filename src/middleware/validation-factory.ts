@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { Schema } from "joi";
+import { ObjectSchema } from "joi";
 import { RequestValidatorError } from "../error/request-validator";
 
 export enum ObjType {
@@ -8,7 +8,7 @@ export enum ObjType {
   "body",
 }
 
-export function requestValidator<T extends Schema>(schema: T, obj?: ObjType) {
+export function requestValidator(schema: ObjectSchema, obj?: ObjType) {
   if (!schema) return;
   return (req: Request, res: Response, next: NextFunction) => {
     let body: any;
