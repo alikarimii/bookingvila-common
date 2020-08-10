@@ -9,6 +9,7 @@ export * from "./middleware/error-handler";
 export * from "./middleware/validation-factory";
 export * from './middleware/schemaCheck';
 export * from './middleware/add-header';
+export * from './middleware/rate-limiter';
 export * from "./util/logger";
 export * from './events/listener';
 export * from './events/publisher';
