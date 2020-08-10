@@ -29,6 +29,7 @@ export function requestValidator(schema: ObjectSchema, obj?: ObjType) {
     if (verify.error) {
       throw new RequestValidatorError(verify.error);
     }
+    req.body.joi = verify.value
     next();
   };
 }
