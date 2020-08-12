@@ -4,5 +4,4 @@ export interface IDomainEvent<T> {
   readonly props: T
   readonly dateTimeOccurred: Date;
   readonly id: UniqueEntityID;
-  readonly operatorId: UniqueEntityID
 }

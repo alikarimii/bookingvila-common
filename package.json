@@ -23,13 +23,13 @@
   },
   "homepage": "https://github.com/alikarimii/bookingvila-common#readme",
   "devDependencies": {
-    "@types/amqplib": "^0.5.13",
-    "@types/express-rate-limit": "^5.0.0",
-    "@types/mongoose": "^5.7.36",
     "del-cli": "^3.0.1",
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@types/amqplib": "^0.5.13",
+    "@types/express-rate-limit": "^5.0.0",
+    "@types/mongoose": "^5.7.36",
     "@types/cookie-session": "^2.0.41",
     "@types/express": "^4.17.7",
     "@types/joi": "^14.3.4",
