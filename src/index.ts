@@ -6,6 +6,7 @@ export * from './error/result'
 export * from './error/user-case-error'
 export * from './error/custom-error'
 export * from './error/rate-limit-error'
+export * from './error/default-error'
 //
 export * from "./middleware/error-handler";
 export * from "./middleware/validation-factory";
