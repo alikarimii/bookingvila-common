@@ -6,6 +6,7 @@ export class DefaultError extends CustomError {
         super(msg)
         this.statusCode = code
         this.message = msg
+        Object.setPrototypeOf(this, DefaultError.prototype)
     }
     serializeError() {
         return [{ message: this.message }]
