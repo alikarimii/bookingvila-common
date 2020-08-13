@@ -1,51 +1,23 @@
-export interface IError {
-    message: string;
-    code: number;
-}
-
 export class Result<T> {
     public isFailure: boolean;
-    public readonly error: IError;
     private _value: T;
 
-    public constructor(public isSuccess: boolean, error?: IError, value?: T) {
-        if (isSuccess && error) {
-            throw new Error(
-                "InvalidOperation: A result cannot be successful and contain an error"
-            );
-        }
-        if (!isSuccess && !error) {
-            throw new Error(
-                "InvalidOperation: A failing result needs to contain an error message"
-            );
-        }
-
+    public constructor(public isSuccess: boolean, value?: T) {
         this.isFailure = !isSuccess;
-        this.error = error as IError;
         this._value = value as T;
         Object.freeze(this);
     }
 
     public getValue(): T {
-        if (!this.isSuccess) {
-            throw new Error(
-                "Can't get the value of an error result. Use 'errorValue' instead."
-            );
-        }
-
         return this._value;
     }
 
-    public errorValue(): { errors: IError[] } {
-        return { errors: [this.error!] };
+    public static ok<L, R>(value?: R): Result<R> {
+        return new Result<R>(true, value);
     }
 
-    public static ok<U>(value?: U): Result<U> {
-        return new Result<U>(true, undefined, value);
-    }
-
-    public static fail<U>(error: IError): Result<U> {
-        return new Result<U>(false, error, undefined);
+    public static fail<L, R>(error: L): Result<L> {
+        return new Result<L>(false, error);
     }
 
     public static combine(results: Result<any>[]): Result<any> {
@@ -90,10 +62,10 @@ export class Right<L, A> {
     }
 }
 
-export const left = <L, A>(l: L): Either<L, A> => {
+export const left = <L, A>(l: L): Left<L, A> => {
     return new Left(l);
 };
 
-export const right = <L, A>(a: A): Either<L, A> => {
+export const right = <L, A>(a: A): Right<L, A> => {
     return new Right<L, A>(a);
 };
