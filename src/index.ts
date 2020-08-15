@@ -15,6 +15,7 @@ export * from './middleware/add-header'
 export * from './middleware/rate-limiter'
 //
 export * from "./util/logger";
+export * from './util/exitHandler'
 //
 export * from './events/listener'
 export * from './events/publisher'
