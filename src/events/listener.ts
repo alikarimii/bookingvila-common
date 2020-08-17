@@ -7,37 +7,42 @@ export abstract class Listener<TData> {
     abstract prefetch: number
     abstract noAck: boolean = false
 
-    constructor(protected channel: Channel) {
+    constructor(protected channel: Promise<Channel>) {
     }
-    listen() {
-        this.subscriptionOption()
-        this.channel.consume(this.queueName, (msg: ConsumeMessage | null) => {
-            if (!msg) {
-                return;
-            }
-            try {
+    async listen() {
+        try {
+            const chan = await this.subscriptionOption()
+            if (!chan) return
+            await chan.consume(this.queueName, (msg: ConsumeMessage | null) => {
+                if (!msg) {
+                    return;
+                }
+
                 let data: TData = JSON.parse(msg.content.toString());
                 this.onMessage(data, msg)
-            } catch (error) {
-                logger.error({ message: JSON.stringify(error), label: "Listener:listen" })
-            }
-        }, { noAck: !!this.noAck })
+
+            }, { noAck: this.noAck })
+        } catch (error) {
+            logger.error({ message: JSON.stringify(error), label: 'Listener:listen' })
+        }
+
     }
-    private subscriptionOption() {
+    private async subscriptionOption(): Promise<Channel | null> {
         try {
             // no exchange => rond robin
-            this.channel
-                .assertQueue(this.queueName, {
-                    durable: true
-                })
+            const chan = await this.channel
+            await chan.assertQueue(this.queueName, {
+                durable: true
+            })
             console.log(
                 " [*] Waiting for messages in %s. To exit press CTRL+C",
                 this.queueName
             );
-            if (this.prefetch) this.channel.prefetch(this.prefetch);
+            if (this.prefetch) chan.prefetch(this.prefetch);
+            return chan
         } catch (error) {
             logger.error({ message: JSON.stringify(error), label: "Listener:subscriptionOption" })
-            return
+            return null
         }
     }
 
