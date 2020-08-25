@@ -1,6 +1,8 @@
 import { Channel } from "amqplib";
 import { logger } from "../util/logger";
+import { injectable } from 'inversify'
 
+@injectable()
 export abstract class Publisher<TData> {
     abstract queueName: string
     constructor(protected channel: Channel) { }

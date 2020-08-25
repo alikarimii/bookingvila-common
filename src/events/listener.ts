@@ -1,6 +1,8 @@
 import { ConsumeMessage, Channel } from 'amqplib'
 import { logger } from '../util/logger';
+import { injectable } from 'inversify'
 
+@injectable()
 export abstract class Listener<TData> {
     abstract queueName: string;
     abstract onMessage(data: TData, msg: ConsumeMessage): void;
