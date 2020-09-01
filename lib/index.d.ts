@@ -14,6 +14,7 @@ export * from './middleware/add-header';
 export * from './middleware/rate-limiter';
 export * from "./util/logger";
 export * from './util/exitHandler';
+export * from './util/nationalCodeValidator';
 export * from './events/listener';
 export * from './events/publisher';
 export * from './domain';

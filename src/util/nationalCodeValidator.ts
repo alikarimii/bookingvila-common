@@ -1,4 +1,4 @@
-export default (value: string, helpers: any) => {
+export const nationalCodeValidator = (value: string, helpers: any) => {
     value = value
         .replace(/۰/g, '0')
         .replace(/۱/g, '1')
